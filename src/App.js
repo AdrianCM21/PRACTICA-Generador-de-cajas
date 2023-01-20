@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {useState} from 'react';
+import AddCajas from './components/Add_Cajas';
+import Mostrar from './components/Mostrar';
 
 function App() {
+  let [Saved,setSaved]=useState([])
+  const msg=(element)=>{
+    setSaved(old=>[...old,element]);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddCajas guarda={msg}/>
+      <Mostrar contenido={Saved}/>
     </div>
   );
 }
